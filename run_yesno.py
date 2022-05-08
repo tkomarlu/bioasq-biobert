@@ -823,7 +823,7 @@ def get_final_text(pred_text, orig_text, do_lower_case):
   return output_text
 
 def _compute_sigmoid(score):
-    z = match.exp(score)
+    z = math.exp(score)
     sig = 1/(1+z)
     return sig
 
