@@ -714,7 +714,7 @@ def write_predictions(all_examples, all_features, all_results, n_best_size,
 
     assert len(prelim_predictions) == 1
     # Not used..
-    probs = _compute_softmax(logits)
+    probs = _compute_sigmoid(logits[0])
     print(logits)
 #     probs = logits
     for (i, entry) in enumerate(prelim_predictions):
@@ -823,6 +823,10 @@ def get_final_text(pred_text, orig_text, do_lower_case):
   output_text = orig_text[orig_start_position:(orig_end_position + 1)]
   return output_text
 
+def _compute_sigmoid(score):
+    z = match.exp(score)
+    sig = 1/(1+z)
+    return sig
 
 def _compute_softmax(scores):
   """Compute softmax probability over raw logits."""
