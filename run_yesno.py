@@ -715,6 +715,7 @@ def write_predictions(all_examples, all_features, all_results, n_best_size,
     assert len(prelim_predictions) == 1
     # Not used..
     probs = _compute_softmax(logits)
+    print(logits)
 #     probs = logits
     for (i, entry) in enumerate(prelim_predictions):
       output = collections.OrderedDict()
